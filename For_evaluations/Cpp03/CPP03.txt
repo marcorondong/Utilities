@@ -38,7 +38,11 @@ DiamondTrap:
 attack() (Scavtrap)
 void whoAmI(); display both its name and its ClapTrap name
 ================================================================================
-
+For Diamong Class:
+- Use the "virtual" keyword when inheriting.
+- Make a separate variable in ScavTrap and FragTrap so DiamondClass can
+inherit from it without overwritting.
+- Use the "using" keyword when callig the atack of other function of a parent class.
 ================================================================================
 int	main()
 {
