@@ -1,6 +1,15 @@
 :::::::::::::::::::::::::::::::: FOR VALGRIND :::::::::::::::::::::::::::::::
 
+FOR LEAKS:
 fgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --show-reachable=yes --error-limit=no --track-fds=yes -s'
+
+
+FOR THREADS:
+valgrind --tool=helgrind --fair-sched=yes
+
+FOR SANITIZERS (COMPILER):
+Address/Memory: -fsanitize=address -fsanitize=undefined
+Threads: -fsanitize=thread
 
 
 
