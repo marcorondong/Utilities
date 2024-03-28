@@ -1,0 +1,105 @@
+:::::::::::::::::::::::::::::::::::MINISHELL::::::::::::::::::::::::::::::::::::
+- ALIAS:
+fgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --show-reachable=yes --error-limit=no --track-fds=yes -s'
+================================================================================
+- TO USE SUPPRESION FILE:
+valgrind --suppressions=./supfile_name.supp ./executable_name
+================================================================================
+Binaries are located mostly in usr/bin
+
+================================================================================
+- TEST CASES:
+--------------------------------------------------------------------------------
+valgrind --leak-check=full --trace-children=yes ./minishell
+echo | < Makefile cat
+
+""
+
+"
+
+This produces SIGPIPE, because echo opens the pipe to write to it;
+but then it has an input redirection from cat; but no one is reading from the pipe
+So the pipe fails. This will get executed by the child, so the child will have leaks
+(but not for execve which are "below main")
+--------------------------------------------------------------------------------
+export var1="s -a"
+s$var1
+
+--> Should list all elements.
+--------------------------------------------------------------------------------
+exit codes bigger that INT. exit with negatives values.
+--> Should all be modulo 255; and negatives overflow (because UNSIGNED LLONG).
+--------------------------------------------------------------------------------
+echo $"" '$USER'
+--> Should print:  $USER
+--------------------------------------------------------------------------------
+cat makefile |
+--> Check for leaks.
+--------------------------------------------------------------------------------
+unset PATH
+ls
+--> minishell: ls: No such file or directory
+--------------------------------------------------------------------------------
+mkdir ls
+unset PATH
+ls
+--> minishell: ls: Is a directory
+--------------------------------------------------------------------------------
+cp /usr/bin/ls ./
+unset PATH
+ls
+--> Should list all elements.
+--------------------------------------------------------------------------------
+cd should update PWD and OLDPWD.
+env should should all variables.
+--------------------------------------------------------------------------------
+check signals, check if when exiting the correct exit status is returned.
+--------------------------------------------------------------------------------
+export var1="tes1.txt test2.txt"
+echo hello > $var1
+--> minishell: ambiguous redirect
+--------------------------------------------------------------------------------
+cat << ""EOF
+> this
+> is
+> $USER
+> testing
+> EOF
+this
+is
+$USER
+testing
+--> It should not expand the variables because the delimiter is quoted.
+--------------------------------------------------------------------------------
+.././././...././usr/bin/ls
+--> minishell: .././././...././usr/bin/ls: No such file or directory
+--------------------------------------------------------------------------------
+pwd | wc -l
+--> minishell: 1
+--------------------------------------------------------------------------------
+env -i ./minishell
+env
+PWD=/home/marondon/Desktop/Borrar/flood_fill
+SHLVL=1
+_=/usr/bin/env
+--------------------------------------------------------------------------------
+.
+--> minishell: .: filename argument required
+--------------------------------------------------------------------------------
+..
+--> minishell:..: command not found
+--------------------------------------------------------------------------------
+execute folder
+command with no path
+cd with no args and no HOME
+heredoc expansions, and quotation
+heredoc leaks
+ambiguous redirection
+--------------------------------------------------------------------------------
+printf "%s\n" """"''''""******"."********""""''
+
+check to see if they print all filenames:
+the ones that have even/odd chars after/ferore the match.
+--------------------------------------------------------------------------------
+group commands with '()' to see if they are actually grouped.
+
