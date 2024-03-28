@@ -1,0 +1,9 @@
+(ulimit -v 6500; ./cub3D maps/map1.cub)
+
+
+- players spawn position and view
+
+
+- .cub file accepted (so it is a hidden file). Check that the len is atleast 5.
+- Map content can not be separated by newlines, but in ur case it's possible
+- Textures checked only for first two letters (should check the whole token) example: EAA - is valid, should be not. Also you arg like '      EA       ./path' should be valid
