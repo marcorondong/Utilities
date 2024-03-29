@@ -89,6 +89,38 @@ _=/usr/bin/env
 ..
 --> minishell:..: command not found
 --------------------------------------------------------------------------------
+echo hello | < Makefile cat
+--------------------------------------------------------------------------------
+your minishell:
+mkdir ls
+ls
+--> minishell: ls: command not found
+
+bash:
+bash:
+mkdir ls
+ls
+inc  ls  Makefile  minishell  obj  src  valgrind_ignore_leaks.txt
+--------------------------------------------------------------------------------
+env -i valgrind ./minishell
+--------------------------------------------------------------------------------
+pwd | echo
+
+--> This causes sigpipe
+--------------------------------------------------------------------------------
+your minishell:
+minishell> .
+.: command not found
+minishell> echo $?
+127
+
+bash:
+bash$ .
+bash: .: filename argument required
+.: usage: . filename [arguments]
+bash$ echo $?
+2
+--------------------------------------------------------------------------------
 execute folder
 command with no path
 cd with no args and no HOME

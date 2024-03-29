@@ -1,0 +1,163 @@
+minishell> pwd | echo
+
+==102984== 
+==102984== Process terminating with default action of signal 13 (SIGPIPE)
+==102984==    at 0x49DA887: write (write.c:26)
+==102984==    by 0x408155: ft_putchar_fd (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x4082C4: ft_putstr_fd (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x408183: ft_putendl_fd (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x401B62: pwd (pwd.c:25)
+==102984==    by 0x4060C6: chexec2 (exec2.c:30)
+==102984==    by 0x4061F5: child_process (exec2.c:57)
+==102984==    by 0x40634C: launch_executable (exec2.c:78)
+==102984==    by 0x405EE1: chexec (exec.c:74)
+==102984==    by 0x405A78: executor2 (exec.c:92)
+==102984==    by 0x4056FD: executor (exec.c:135)
+==102984==    by 0x401A16: main_loop (minishell.c:102)
+==102984== 
+==102984== FILE DESCRIPTORS: 3 open (3 std) at exit.
+==102984== 
+==102984== HEAP SUMMARY:
+==102984==     in use at exit: 215,105 bytes in 335 blocks
+==102984==   total heap usage: 524 allocs, 189 frees, 229,586 bytes allocated
+==102984== 
+==102984== 7 bytes in 1 blocks are still reachable in loss record 1 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x402DD3: add_token (lexing.c:71)
+==102984==    by 0x402EFD: lex_it2 (lexing.c:98)
+==102984==    by 0x402F76: lex_it (lexing.c:112)
+==102984==    by 0x401950: main_loop (minishell.c:93)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 8 bytes in 1 blocks are still reachable in loss record 2 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x4085EC: ft_strjoin (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x4088A1: ft_strjoin_free (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x404747: set_env_value (env_utils.c:43)
+==102984==    by 0x406AF0: get_shlvl (init.c:58)
+==102984==    by 0x406EEA: init_data (init.c:123)
+==102984==    by 0x401A91: main (minishell.c:115)
+==102984== 
+==102984== 9 bytes in 2 blocks are still reachable in loss record 6 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x404DD8: get_args (cmd_table.c:82)
+==102984==    by 0x404EB1: cmd_table (cmd_table.c:102)
+==102984==    by 0x4019DF: main_loop (minishell.c:100)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 11 bytes in 1 blocks are still reachable in loss record 8 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x40341C: parse_hell (insert_env.c:109)
+==102984==    by 0x401919: main_loop (minishell.c:92)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 16 bytes in 2 blocks are still reachable in loss record 19 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x404B6A: add_str (lexing2.c:34)
+==102984==    by 0x402ED8: lex_it2 (lexing.c:96)
+==102984==    by 0x402F76: lex_it (lexing.c:112)
+==102984==    by 0x401950: main_loop (minishell.c:93)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 24 bytes in 1 blocks are still reachable in loss record 21 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x406FFF: heredoc_filename (init2.c:38)
+==102984==    by 0x406E75: init_data (init.c:119)
+==102984==    by 0x401A91: main (minishell.c:115)
+==102984== 
+==102984== 24 bytes in 1 blocks are still reachable in loss record 25 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40140D: ft_strlstnew (utils_list.c:50)
+==102984==    by 0x402E01: add_token (lexing.c:75)
+==102984==    by 0x402EFD: lex_it2 (lexing.c:98)
+==102984==    by 0x402F76: lex_it (lexing.c:112)
+==102984==    by 0x401950: main_loop (minishell.c:93)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 24 bytes in 1 blocks are still reachable in loss record 26 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x405654: executor (exec.c:122)
+==102984==    by 0x401A16: main_loop (minishell.c:102)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 32 bytes in 2 blocks are still reachable in loss record 29 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x404D76: get_args (cmd_table.c:75)
+==102984==    by 0x404EB1: cmd_table (cmd_table.c:102)
+==102984==    by 0x4019DF: main_loop (minishell.c:100)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 48 bytes in 2 blocks are still reachable in loss record 32 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40140D: ft_strlstnew (utils_list.c:50)
+==102984==    by 0x404B98: add_str (lexing2.c:38)
+==102984==    by 0x402ED8: lex_it2 (lexing.c:96)
+==102984==    by 0x402F76: lex_it (lexing.c:112)
+==102984==    by 0x401950: main_loop (minishell.c:93)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 56 bytes in 1 blocks are still reachable in loss record 33 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x4085EC: ft_strjoin (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x4088A1: ft_strjoin_free (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x404747: set_env_value (env_utils.c:43)
+==102984==    by 0x406BA4: get_shlvl (init.c:64)
+==102984==    by 0x406EEA: init_data (init.c:123)
+==102984==    by 0x401A91: main (minishell.c:115)
+==102984== 
+==102984== 80 bytes in 2 blocks are still reachable in loss record 35 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x404BE8: new_cmd (cmd_table.c:19)
+==102984==    by 0x404F39: cmd_table (cmd_table.c:108)
+==102984==    by 0x4019DF: main_loop (minishell.c:100)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 104 bytes in 1 blocks are still reachable in loss record 38 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x4093C9: ft_calloc (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x408F3C: ft_split (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x406C76: get_path (init.c:78)
+==102984==    by 0x405691: executor (exec.c:124)
+==102984==    by 0x401A16: main_loop (minishell.c:102)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 195 bytes in 12 blocks are still reachable in loss record 43 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x408E91: fill_array (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x408FEC: ft_split (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x406C76: get_path (init.c:78)
+==102984==    by 0x405691: executor (exec.c:124)
+==102984==    by 0x401A16: main_loop (minishell.c:102)
+==102984==    by 0x401AC3: main (minishell.c:118)
+==102984== 
+==102984== 496 bytes in 1 blocks are still reachable in loss record 47 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x4068CD: init_env_arr (init.c:23)
+==102984==    by 0x406EB2: init_data (init.c:121)
+==102984==    by 0x401A91: main (minishell.c:115)
+==102984== 
+==102984== 3,843 bytes in 59 blocks are still reachable in loss record 67 of 91
+==102984==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==102984==    by 0x40853D: ft_strdup (in /home/marondon/Downloads/minishell_29_3/minishell)
+==102984==    by 0x406920: init_env_arr (init.c:29)
+==102984==    by 0x406EB2: init_data (init.c:121)
+==102984==    by 0x401A91: main (minishell.c:115)
+==102984== 
+==102984== LEAK SUMMARY:
+==102984==    definitely lost: 0 bytes in 0 blocks
+==102984==    indirectly lost: 0 bytes in 0 blocks
+==102984==      possibly lost: 0 bytes in 0 blocks
+==102984==    still reachable: 4,977 bytes in 90 blocks
+==102984==         suppressed: 210,128 bytes in 245 blocks
+==102984== 
+==102984== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--102984-- 
+--102984-- used_suppression:     75 leak readline valgrind_ignore_leaks.txt:2 suppressed: 210,128 bytes in 245 blocks
+==102984== 
+==102984== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+minishell>
