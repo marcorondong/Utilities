@@ -134,4 +134,8 @@ check to see if they print all filenames:
 the ones that have even/odd chars after/ferore the match.
 --------------------------------------------------------------------------------
 group commands with '()' to see if they are actually grouped.
+--------------------------------------------------------------------------------
+echo $var1 && echo $var2 && export var1="Hello " && export var2="World!"
+
+bash examnds while execute; it doesn't expand everything first. So the above command will output 2 empty lines since var1 and var2 are exported after calling echo.
 
