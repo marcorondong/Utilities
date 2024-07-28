@@ -139,3 +139,103 @@ echo $var1 && echo $var2 && export var1="Hello " && export var2="World!"
 
 bash examnds while execute; it doesn't expand everything first. So the above command will output 2 empty lines since var1 and var2 are exported after calling echo.
 
+--------------------------------------------------------------------------------
+EVALUATION EXAMPLE
+--------------------------------------------------------------------------------
+
+
+Test01:
+
+echo hello | < Makefile cat
+
+--> This causes leaks
+______________________________________________________
+
+Test02:
+
+Your minishell:
+minishell> unset PATH
+minishell> ls
+--> minishell🧙: ls: command not found
+
+Bash:
+bash$ unset PATH
+bash$ ls
+--> bash: ls: No such file or directory
+
+______________________________________________________
+
+Test03:
+
+mkdir ls
+unset PATH
+ls
+--> bash$: ls: Is a directory
+______________________________________________________
+
+Test04:
+
+your minishell:
+mkdir ls
+ls
+--> minishell 🧙: ls: command not found
+
+bash:
+bash:
+mkdir ls
+ls
+inc  ls  Makefile  minishell  obj  src  valgrind_ignore_leaks.txt
+______________________________________________________
+
+Test05:
+
+env -i valgrind ./minishell
+
+--> If you like, you can throw an error message like "no env. exiting minishell".
+
+______________________________________________________
+
+Test06:
+
+pwd | echo
+
+--> This causes sigpipe
+
+______________________________________________________
+
+Test07:
+
+your minishell:
+minishell> export test="file1.txt file2.txt"
+minishell> cat $test
+/usr/bin/cat: file1.txt: No such file or directory
+/usr/bin/cat: file2.txt: No such file or directory
+minishell> echo "hello" >> $test
+minishell> 
+
+bash:
+bash$ export test="file1.txt file2.txt"
+bash$ cat $test
+cat: file1.txt: No such file or directory
+cat: file2.txt: No such file or directory
+bash$ echo "hello" >> $test
+bash: $test: ambiguous redirect
+bash$ echo $?
+1
+
+______________________________________________________
+
+Test08:
+
+your minishell:
+minishell> .
+🧙: .: command not found
+minishell> echo $?
+127
+
+bash:
+bash$ .
+bash: .: filename argument required
+.: usage: . filename [arguments]
+bash$ echo $?
+2
