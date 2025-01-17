@@ -1,0 +1,26 @@
+:::::::::::::::::::::::::::::::: FOR VALGRIND :::::::::::::::::::::::::::::::
+
+FOR LEAKS:
+fgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --show-reachable=yes --error-limit=no --track-fds=yes -s'
+
+
+FOR THREADS:
+valgrind --tool=helgrind --fair-sched=yes
+
+FOR SANITIZERS (COMPILER):
+Address/Memory: -fsanitize=address -fsanitize=undefined
+Threads: -fsanitize=thread
+
+
+
+:::::::::::::::::::::::::::::::: FOR SUPPRESIONS :::::::::::::::::::::::::::::::
+
+generate_test:
+	valgrind --leak-check=full --show-reachable=yes --error-limit=no \
+--gen-suppressions=all --log-file=$(NAME).log ./$(NAME)
+
+
+
+test	: all
+	clear; valgrind --leak-check=full --track-origins=yes --track-fds=yes \
+--show-reachable=yes --show-leak-kinds=all --error-limit=no --suppressions=./$(NAME).supp ./$(NAME)

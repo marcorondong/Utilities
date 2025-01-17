@@ -1,0 +1,66 @@
+- In every action, It should be a check for energy points and hitpoints
+before attempting to do something.
+
+- In the inheritances excercises (e.g ScavTrap) there shouldnt be any definitions
+because it's inheritance, and it should inherit alll the definitions from the
+parent. The only thing allowed are the functions (HiFive, etc).
+
+- Constructor:built from bottom to top (e.g: 1st ClapTrap, 2nd ScavTrap/FragTrap).
+Destructor: destroy from top to bottom (1st ScavTrap/FragTrap, 2nd ClapTrap).
+
+================================================================================
+ClapTrap:
+• Hit points (10)
+• Energy points (10)
+• Attack damage (0)
+void attack(const std::string& target);
+void takeDamage(unsigned int amount);
+void beRepaired(unsigned int amount);
+
+
+ScavTrap:
+• Hit points (100)
+• Energy points (50)
+• Attack damage (20)
+void guardGate();
+
+FragTrap:
+• Hit points (100)
+• Energy points (100)
+• Attack damage (30)
+void highFivesGuys(void);
+
+
+DiamondTrap:
+• Hit points (FragTrap)
+• Energy points (ScavTrap)
+• Attack damage (FragTrap)
+attack() (Scavtrap)
+void whoAmI(); display both its name and its ClapTrap name
+================================================================================
+For Diamong Class:
+- Use the "virtual" keyword when inheriting.
+- Make a separate variable in ScavTrap and FragTrap so DiamondClass can
+inherit from it without overwritting.
+- Use the "using" keyword when callig the atack of other function of a parent class.
+================================================================================
+int	main()
+{
+	std::cout << "\n--- Constructors ---\n" << std::endl;
+	FragTrap _Marco("Marco");
+	FragTrap _Marco("Arthur");
+
+	_Marco.attack("Arthur");
+	_Arthur.takeDamage(_Marco.getAttackDamage());
+	_Marco.attack("Arthur");
+	_Arthur.takeDamage(_Marco.getAttackDamage());
+	_Marco.attack("Arthur");
+	_Arthur.takeDamage(_Marco.getAttackDamage());
+	_Marco.attack("Arthur");
+	_Arthur.takeDamage(_Marco.getAttackDamage());
+	
+	_Arthur.attack("Marco");
+	
+	std::cout << "\n--- Destructors ---\n" << std::endl;
+	
+}
